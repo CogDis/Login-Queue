@@ -3,19 +3,21 @@ package com.raphfrk.bukkit.loginqueue2;
 import java.util.Iterator;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 
 import com.raphfrk.bukkit.loginqueue2.LoginQueue.PlayerInfo;
 
-public class LoginQueuePlayerListener extends org.bukkit.event.player.PlayerListener {
+public class LoginQueuePlayerListener implements org.bukkit.event.Listener {
 
 	LoginQueue p;
 
 	LoginQueuePlayerListener(LoginQueue p) {
 		this.p = p;
 	}
-
+	
+	@EventHandler
 	public void onPlayerLogin(PlayerLoginEvent event) {
 
 		Player player = event.getPlayer();

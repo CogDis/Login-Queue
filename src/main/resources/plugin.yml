@@ -1,0 +1,4 @@
+name: LoginQueue
+main: com.raphfrk.bukkit.loginqueue2.LoginQueue
+version: 1.0
+authors: Raphfrk, PrecipiceGames

@@ -27,8 +27,6 @@ import java.util.logging.Logger;
 
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class LoginQueue extends JavaPlugin {
@@ -112,7 +110,7 @@ public class LoginQueue extends JavaPlugin {
 
 		pf.save();
 
-		getServer().getPluginManager().registerEvent(Type.PLAYER_LOGIN, playerListener, Priority.Normal, this);
+		getServer().getPluginManager().registerEvents(playerListener, this);
 
 		if(sqlEnabled.get()) {
 			Connection conn = null;
@@ -215,6 +213,7 @@ public class LoginQueue extends JavaPlugin {
 
 
 
+		@Override
 		public void run() {
 
 			log.info("[LoginQueue] Starting Poll Timer Thread");
@@ -393,6 +392,7 @@ public class LoginQueue extends JavaPlugin {
 		AtomicLong polledQueue = new AtomicLong(0);
 		AtomicLong becameEligible = new AtomicLong(0);
 		
+		@Override
 		public synchronized String toString() {
 			return (connect.get()?"connect ":"") + 
 					(queued.get()?"queued ":"") +
